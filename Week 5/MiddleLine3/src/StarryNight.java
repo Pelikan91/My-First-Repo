@@ -1,21 +1,29 @@
 import javax.swing.*;
+
 import java.awt.*;
+
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
+public class StarryNight {
+    public static void mainDraw(Graphics graphics) {
 
-public class CenterBoxFunction {
-    public static void drawImage(Graphics graphics){
+        graphics.setColor(Color.BLACK);
+        graphics.fillRect(0,0, WIDTH, HEIGHT);
 
-        int sqSize = 50;
-        for (int i = 0; i < 4; i++) {
-            drawSquare(sqSize, graphics);
-            sqSize *=2;
+        int numberOfStars = 200;
+
+        for (int i = 0; i < numberOfStars; i++) {
+
+            int randomNumber1 = (int) (Math.random() * 255);
+            Color randomColor = new Color(randomNumber1, randomNumber1, randomNumber1);
+
+            int randomSizeX = (int) (Math.random() * 310);
+            int randomSizeY = (int) (Math.random() * 310);
+            int squareSize = 5;
+            graphics.setColor(randomColor);
+            graphics.drawRect(randomSizeX, randomSizeY, squareSize, squareSize);
+
         }
     }
-
-    public static void drawSquare(int squareSize, Graphics graphics){
-        graphics.drawRect(WIDTH/2-squareSize/2, HEIGHT/2-squareSize/2, squareSize, squareSize);
-    }
-
     // Don't touch the code below
     static int WIDTH = 320;
     static int HEIGHT = 320;
@@ -35,7 +43,7 @@ public class CenterBoxFunction {
         @Override
         protected void paintComponent(Graphics graphics) {
             super.paintComponent(graphics);
-            drawImage(graphics);
+            mainDraw(graphics);
         }
     }
 }

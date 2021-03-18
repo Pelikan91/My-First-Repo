@@ -1,24 +1,18 @@
 import javax.swing.*;
-
 import java.awt.*;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
-public class GoToCenter {
-    public static void drawImage(Graphics graphics) {
-        int startx = 10;
-        int starty = 10;
+public class EnvelopeStar {
+    public static void mainDraw(Graphics graphics) {
 
-        for (int i = 0; i < 3; i++) {
-            myThreeLines(startx,starty,graphics);
-            startx = (startx+ 15);
-            starty = (starty- 15);
+        for (int i = 0; i < WIDTH / 2; i += 10) {
+            graphics.setColor(Color.GREEN);
+            graphics.drawLine(WIDTH / 2 + i, HEIGHT / 2, WIDTH / 2, i);
+            graphics.drawLine(WIDTH / 2, i, WIDTH / 2 - i, HEIGHT / 2);
+            graphics.drawLine(WIDTH / 2 - i, HEIGHT / 2, WIDTH / 2, HEIGHT - i);
+            graphics.drawLine(WIDTH / 2, HEIGHT - i, WIDTH / 2 + i, HEIGHT / 2);
         }
-    }
-
-    public static void myThreeLines(int startx, int starty, Graphics graphics) {
-        Point middle = new Point(WIDTH/2,HEIGHT/2);
-        graphics.drawLine(startx, starty, WIDTH/2, HEIGHT/2);
     }
 
     // Don't touch the code below
@@ -40,7 +34,7 @@ public class GoToCenter {
         @Override
         protected void paintComponent(Graphics graphics) {
             super.paintComponent(graphics);
-            drawImage(graphics);
+            mainDraw(graphics);
         }
     }
 }
